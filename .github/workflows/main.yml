@@ -25,17 +25,15 @@ jobs:
 
       - name: Проверка директории
         run: |
-          - ls -l
-          - ls -l ConsoleApp/
-          - ls -l Tests/
+          ls -l
 
       - name: Сохранение объектов сборки
         uses: actions/upload-artifact@v3
         with:
           name: build-output
           path: |
-            - ./**/bin/
-            - ./**/obj/
+            **/bin/
+            **/obj/
 
   test:
     runs-on: ubuntu-latest
