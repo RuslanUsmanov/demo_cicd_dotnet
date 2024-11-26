@@ -3,7 +3,11 @@ stages:
   - test
 
 
-job_test:
+build:
   stage: build
+  image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
-    - echo "Hello World!"
+    - echo "Устанавливаем библиотеки"
+    - dotnet restore
+    - echo "Компилируем проект"
+    - dotnet build --no-restore -c Release
