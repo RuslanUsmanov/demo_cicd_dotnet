@@ -12,6 +12,6 @@ public class Tests
     [Test]
     public void Test_Sub()
     {
-        Assert.That(Algebra.Sub(1, 1), Is.EqualTo(1));
+        Assert.That(Algebra.Sub(1, 1), Is.EqualTo(0));
     }
 }
