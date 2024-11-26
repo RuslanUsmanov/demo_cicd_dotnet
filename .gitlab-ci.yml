@@ -9,7 +9,7 @@ stages:
 
 build-job:
   extends:
-    - run-on-merge
+    - .run-on-merge
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
@@ -20,7 +20,7 @@ build-job:
 
 test-job:
   extends:
-    - run-on-merge
+    - .run-on-merge
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
