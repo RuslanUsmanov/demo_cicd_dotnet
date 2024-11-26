@@ -21,7 +21,15 @@ jobs:
         run: dotnet restore
 
       - name: Сборка проекта
-        run: dotnet build --no-restore -c Release
+        run: dotnet build --no-restore
+
+      - name: Сохранение объектов сборки
+        uses: actions/upload-artifacts@v3
+        with:
+          name: build-output
+          paths: |
+            - '**/bin'
+            - '**/obj'
 
   test:
     runs-on: ubuntu-latest
@@ -35,5 +43,11 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      - name: Скачивание объектов сборки
+        uses: actions/download-artifacts@v3
+        with:
+          name: build-output
+          path: build-artifacts
+
       - name: Сборка проекта
-        run: dotnet test --verbosity normal
+        run: dotnet test --no-build --verbosity normal
