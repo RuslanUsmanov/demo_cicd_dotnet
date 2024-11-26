@@ -33,6 +33,6 @@ test-job:
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
     - echo "Запускаем тесты"
-    - dotnet test --verbosity normal
+    - dotnet test --no-build --verbosity normal
   dependencies:
     - build-job
