@@ -8,8 +8,8 @@ stages:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 build-job:
-  extends:
-    - .run-on-merge
+  # extends:
+  #   - .run-on-merge
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
@@ -17,10 +17,18 @@ build-job:
     - dotnet restore
     - echo "Компилируем проект"
     - dotnet build --no-restore -c Release
+  artifacts:
+    untracked: false
+    when: on_success
+    access: all
+    expire_in: "1 days"
+    paths:
+      - '**/bin'
+      - '**/obj'
 
 test-job:
-  extends:
-    - .run-on-merge
+  # extends:
+  #   - .run-on-merge
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
