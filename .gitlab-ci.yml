@@ -23,8 +23,8 @@ build-job:
     access: all
     expire_in: "1 days"
     paths:
-      - '**/bin'
-      - '**/obj'
+      - **/bin/
+      - **/obj/
 
 test-job:
   # extends:
