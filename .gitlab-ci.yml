@@ -16,7 +16,7 @@ build-job:
     - echo "Устанавливаем библиотеки"
     - dotnet restore
     - echo "Компилируем проект"
-    - dotnet build --no-restore -c Release
+    - dotnet build --no-restore
   artifacts:
     untracked: false
     when: on_success
