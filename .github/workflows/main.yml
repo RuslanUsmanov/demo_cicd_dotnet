@@ -23,13 +23,19 @@ jobs:
       - name: Сборка проекта
         run: dotnet build --no-restore
 
+      - name: Проверка директории
+        run: |
+          - ls -l
+          - ls -l ConsoleApp/
+          - ls -l Tests/
+
       - name: Сохранение объектов сборки
         uses: actions/upload-artifact@v3
         with:
           name: build-output
           path: |
-            - **/bin/
-            - **/obj/
+            - ./**/bin/
+            - ./**/obj/
 
   test:
     runs-on: ubuntu-latest
