@@ -1,0 +1,23 @@
+name: Build and Test project
+
+on:
+  push:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получение исходного кода
+        uses: actions/checkout@v3
+
+      - name: Установка .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Установка библиотек
+        run: dotnet restore
+
+      - name: Сборка проекта
+        run: dotnet build --no-restore -c Release
