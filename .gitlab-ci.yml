@@ -3,8 +3,13 @@ stages:
   - test
   - deploy
 
+.run-on-merge:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 build-job:
+  extends:
+    - run-on-merge
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
@@ -14,6 +19,8 @@ build-job:
     - dotnet build --no-restore -c Release
 
 test-job:
+  extends:
+    - run-on-merge
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
