@@ -28,8 +28,8 @@ jobs:
         with:
           name: build-output
           path: |
-            - '**/bin'
-            - '**/obj'
+            - **/bin/
+            - **/obj/
 
   test:
     runs-on: ubuntu-latest
